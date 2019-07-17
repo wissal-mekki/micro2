@@ -20,7 +20,7 @@ public class Questionnaire implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "sujet", nullable = false)
+    @Column(name = "sujet", nullable = false, unique = true)
     private String sujet;
 
 

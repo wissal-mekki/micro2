@@ -27,7 +27,11 @@ private QuestionRepository questionRepository;
         this.propositionRepository=propositionRepository;
         this.questionRepository=questionRepository;
     }
+    @GetMapping("/propositiontest")
+    public List<Proposition> findPropositionTest(Long id){
+        return this.propositionRepository.findAllByQuestionId(id);
 
+    }
     @GetMapping("/lastQuestion")
     public Question findQuestionId(){
         return this.questionRepository.findTopByOrderByIdDesc();

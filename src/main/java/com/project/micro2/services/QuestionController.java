@@ -35,6 +35,11 @@ private  QuestionnaireRepository questionnaireRepository;
      return this.questionnaireRepository.findTopByOrderByIdDesc();
 
     }
+    @GetMapping("/questiontest")
+    public List<Question> findQuestionTest(Long id){
+        return this.questionRepository.findAllByQuestionnaireId(id) ;
+
+    }
 
     @PostMapping("/question")
     public Question CreateEmployee(@Valid @RequestBody Question question) throws URISyntaxException {
