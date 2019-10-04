@@ -23,7 +23,7 @@ node {
    }
   
    stage('Publish') {
-     nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/micro1-0.0.1-SNAPSHOT.jar']], mavenCoordinate: [artifactId: 'micro1', groupId: 'com.project', packaging: 'jar', version: '0.0.1']]]
+     nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/micro2-0.0.1-SNAPSHOT.jar']], mavenCoordinate: [artifactId: 'micro2', groupId: 'com.project', packaging: 'jar', version: '0.0.1']]]
    }
 
 stage('Analyse sonar') {
