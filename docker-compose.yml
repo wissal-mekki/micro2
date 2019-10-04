@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  docker-mysql2:
+    build:
+      context: ./src/main/resources
+      dockerfile: Dockerfile
+    volumes:
+        - ./src/main/resources:/docker-entrypoint-initdb.d
+  #  image: mysql:latest
+   # volumes:
+    #  - /var/lib/mysql/micro2:/home/docker/micro2-volume
+    #environment:
+     # - MYSQL_ROOT_PASSWORD=26156276
+      #- MYSQL_DATABASE=micro2
+   #   - MYSQL_PASSWORD=26156276
+
+
+  micro2-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - docker-mysql2
+    links:
+      - docker-mysql2:mysql
+    ports:
+      - 8082:8082
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://docker-mysql2/micro2?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=26156276
+      #- DATABASE_HOST=docker-mysql
+      #- DATABASE_USER=root
+      #- DATABASE_PASSWORD=26156276
+      # - DATABASE_NAME=micro1
+      #- DATABASE_PORT=3306
+#volumes:
+ # micro2-volume:
